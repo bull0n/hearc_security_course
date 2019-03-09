@@ -6,15 +6,19 @@ date 09.03.2018
 
 import secrets
 
-import pyDH
+from diffiehellman.diffiehellman import DiffieHellman
 
 class Server():
-    __init__
-    def response()
-    print('Im a server')
+    def __init__(self):
+        self.used_nonce = set()
+        self.shared_secret = None
 
-def client():
-    print('Im a client')
+    def response():
+        print('Im a server')
+
+class Client():
+    def __init__(self):
+        self.shared_secret = None
 
 if __name__ == '__main__':
     print('hello world')
