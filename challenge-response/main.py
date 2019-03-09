@@ -11,6 +11,8 @@ from diffiehellman.diffiehellman import DiffieHellman
 class Server():
     def __init__(self):
         self.used_nonce = set()
+        self.diffiehellman = DiffieHellman()
+        self.public_key = None
         self.shared_secret = None
 
     def response(self):
@@ -19,6 +21,8 @@ class Server():
 class Client():
     def __init__(self):
         self.shared_secret = None
+        self.diffiehellman = DiffieHellman()
+        self.public_key = None
 
     def request(self):
         print('Im a client')
