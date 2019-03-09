@@ -6,7 +6,11 @@ date 09.03.2018
 
 import secrets
 
-def server():
+import pyDH
+
+class Server():
+    __init__
+    def response()
     print('Im a server')
 
 def client():
