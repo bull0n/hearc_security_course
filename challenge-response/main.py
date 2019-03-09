@@ -13,12 +13,15 @@ class Server():
         self.used_nonce = set()
         self.shared_secret = None
 
-    def response():
+    def response(self):
         print('Im a server')
 
 class Client():
     def __init__(self):
         self.shared_secret = None
+
+    def request(self):
+        print('Im a client')
 
 if __name__ == '__main__':
     print('hello world')
