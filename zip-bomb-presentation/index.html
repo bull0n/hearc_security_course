@@ -1,71 +1,82 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>ZipBomb</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/white.css">
+	<title>ZipBomb</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement('link');
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-		<style>
-			a::after {
-				content: attr(href);
-			}
-		</style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		a::after {
+			content: attr(href);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Decompression Bomb</h1>
+				<p>
+					Lucas Billoni & Raphaël Margueron
+				</p>
+				<p>
+					Haute-École Arc
+				</p>
+			</section>
+
+			<section>
+				<h2>Qu'est ce que c'est</h2>
+				<i>Une bombe de décompression est un type de fichier malveillant qui consiste en un fichier compressé dont la décompression mobilise tellement de ressources qu'il peut faire geler le système.</i> - Wikipédia
+			</section>
+
+			<section>
+				<h2>Type de compression</h2>
+				<ul>
+					<li>Images</li>
+					<li>HTTP</li>
+					<li>Archives</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Type de bombe de décompression par archive</h2>
+				<ul>
+					<li>Zip-bomb : Un unique gros fichier compressé</li>
+					<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
+					<li>Nested compressed files : Plein de zip de gros fichiers compressés</li>
+				</ul>
+			</section>
+			<section>
+
 				<section>
-					<h1>Decompression Bomb</h1>
-					<p>
-						Lucas Billoni & Raphaël Margueron
-					</p>
-					<p>
-						Haute-École Arc
-					</p>
-				</section>
-				<section>
-					<h2>Qu'est ce que c'est</h2>
-					<i>Une bombe de décompression est un type de fichier malveillant qui consiste en un fichier compressé dont la décompression mobilise tellement de ressources qu'il peut faire geler le système.</i> - Wikipédia
-				</section>
-				<section>
-					<h2>Type de compression</h2>
-					<ul>
-						<li>Images</li>
-						<li>HTTP</li>
-						<li>Archives</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Type de bombe de décompression par archive</h2>
-					<ul>
-						<li>Zip-bomb : Un unique gros fichier compressé</li>
-						<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
-						<li>Nested compressed files : Plein de zip de gros fichiers compressés</li>
-					</ul>
+					<h2></h2>
 				</section>
 				<section>
 					<h2>Comment en faire une</h2>
-				</section>
-				<section>
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
 				</section>
+
+			</section>
+
+			<section>
 				<section>
-					Mitigations
+					<h2>Mitigations</h2>
 				</section>
 				<section>
 					<h4>En général</h4>
@@ -78,13 +89,13 @@
 						</li>
 					</ol>
 					<h6>Exemple en python</h6>
-<pre><code data-trim>import resource
+					<pre><code data-trim>import resource
 rsrc = resource.RLIMIT_DATA
 resource.setrlimit(rsrc, (1024000, 1024000)) # limit to 1MB</code></pre>
 				</section>
 				<section>
 					<h4>Archive</h4>
-					<ol  style="margin-bottom: 50px;">
+					<ol style="margin-bottom: 50px;">
 						<li>
 							Limiter la taille maximale de l'archive final
 						</li>
@@ -94,8 +105,7 @@ resource.setrlimit(rsrc, (1024000, 1024000)) # limit to 1MB</code></pre>
 					</ol>
 
 					<h6>Exemple en python</h6>
-<pre><code data-trim>import zlib
-
+					<pre><code data-trim>import zlib
 dec = zlib.decompressobj()
 data = dec.decompress(data, maxsize)
 if dec.unconsumed_tail:
@@ -103,39 +113,54 @@ if dec.unconsumed_tail:
 del dec
 return data</code></pre>
 				</section>
-				<section>
-					<h2>Démonstration</h2>
-				</section>
-				<section>
-					<h2>Sources</h2>
-					<p>
-						Sources datées au 15 mars 2019
-					</p>
-					<ul>
-						<li>I Came to Drop Bombs: Auditing the Compression Algorithm Weapon Cache : <a href="https://www.youtube.com/watch?v=IXkX2ojrKZQ"></a></li>
-						<li>The (Decompression) Bomb Site : <a href="https://bomb.codes/"></a></li>
-						<li>bzip2 Archive Inflating to 1,400,000x its Size aka Decompression Bomb : <a href="https://www.youtube.com/watch?v=1ds-Q04TD98"></a></li>
-					</ul>
-				</section>
-			</div>
+
+			</section>
+
+			<section>
+				<h2>Démonstration</h2>
+			</section>
+
+			<section>
+				<h2>Sources</h2>
+				<p>
+					Sources datées au 15 mars 2019
+				</p>
+				<ul>
+					<li>I Came to Drop Bombs: Auditing the Compression Algorithm Weapon Cache : <a href="https://www.youtube.com/watch?v=IXkX2ojrKZQ"></a></li>
+					<li>The (Decompression) Bomb Site : <a href="https://bomb.codes/"></a></li>
+					<li>bzip2 Archive Inflating to 1,400,000x its Size aka Decompression Bomb : <a href="https://www.youtube.com/watch?v=1ds-Q04TD98"></a></li>
+				</ul>
+			</section>
 		</div>
+	</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				history: true,
-				slideNumber: true ,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			history: true,
+			slideNumber: true,
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+			]
+		});
+	</script>
+</body>
+
 </html>
