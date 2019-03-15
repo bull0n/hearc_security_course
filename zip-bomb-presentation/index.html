@@ -34,7 +34,7 @@
 			<section>
 				<h1>Decompression Bomb</h1>
 				<p>
-					Lucas Billoni & Raphaël Margueron
+					Lucas Bulloni & Raphaël Margueron
 				</p>
 				<p>
 					Haute-École Arc
@@ -112,6 +112,17 @@ if dec.unconsumed_tail:
   raise ValueError("Possible bomb")
 del dec
 return data</code></pre>
+				</section>
+
+				<section>
+					<h3>Images</h3>
+					<p>Vérifier le header pour la taille</p>
+					<strong>ATTENTION</strong> : Pas fiable
+				</section>
+
+				<section>
+					<h3>HTTP</h3>
+					Pas vraiment de mitigation, limiter les ressources et la décompression est le seul moyen disponible
 				</section>
 
 			</section>
