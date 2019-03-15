@@ -46,6 +46,7 @@
 				<ul>
 					<li>Qu'est ce que c'est ?</li>
 					<li>Artisanat</li>
+					<li>Mitigations</li>
 					<li>Démonstration</li>
 					<li>Sources</li>
 				</ul>
@@ -88,7 +89,7 @@
 								<li>Faire crasher des programmes client (lecteur d'image / navigateur / navigateur mobile)</li>
 								<li>Faire crasher des programmes serveur</li>
 								<li>Inonder un disque dur</li>
-								<li>Inonder un disque dur</li>
+								<!-- TODO plus d'exemples-->
 							</ul>
 						</li>
 					</ul>
@@ -101,11 +102,16 @@
 					<h2>Artisanat</h2>
 				</section>
 				<section>
-					<h2>Comment en faire une simple zip-bomb archive</h2>
+					<h2>Comment en faire une simple Zip-bomb archive</h2>
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
 				</section>
 				<section>
-					<h2></h2>
+					<h2>Fonctionnement Self-reproducing bomb</h2>
+					<small>Source : <a href="https://research.swtch.com/zip"></a></small>
+				</section>
+				<section>
+					<h2>Télécharger</h2>
+					<a href="https://bomb.codes/bombs"></a>
 				</section>
 			</section>
 
