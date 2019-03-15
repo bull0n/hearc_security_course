@@ -20,21 +20,51 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			a::after {
+				content: attr(href);
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Decompression Bomb</section>
 				<section>
-					Qu'est ce que c'est
+					<h1>Decompression Bomb</h1>
+					<p>
+						Lucas Billoni & Raphaël Margueron
+					</p>
+					<p>
+						Haute-École Arc
+					</p>
 				</section>
 				<section>
-					Comment en faire une
+					<h2>Qu'est ce que c'est</h2>
+					<i>Une bombe de décompression est un type de fichier malveillant qui consiste en un fichier compressé dont la décompression mobilise tellement de ressources qu'il peut faire geler le système.</i> - Wikipédia
+				</section>
+				<section>
+					<h2>Type de bombe de décompression</h2>
+					<ul>
+						<li>Zip-bomb : Un unique gros fichier compressé</li>
+						<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
+						<li>Nested compressed files : Plein de gros zip de gros compressé</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Formats supportés</h2>
+					<ul>
+						<li>Archives</li>
+						<li>Images</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Comment en faire une</h2>
 				</section>
 				<section>
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
 				</section>
 				<section>
+
 					Mitigations
 				</section>
 				<section>
@@ -73,9 +103,21 @@ if dec.unconsumed_tail:
 del dec
 return data</code></pre>
 
+					<h2>Mitigation</h2>
 				</section>
 				<section>
-					Démonstration
+					<h2>Démonstration</h2>
+				</section>
+				<section>
+					<h2>Sources</h2>
+					<p>
+						Sources datées au 15 mars 2019
+					</p>
+					<ul>
+						<li>I Came to Drop Bombs: Auditing the Compression Algorithm Weapon Cache : <a href="https://www.youtube.com/watch?v=IXkX2ojrKZQ"></a></li>
+						<li>The (Decompression) Bomb Site : <a href="https://bomb.codes/"></a></li>
+						<li>bzip2 Archive Inflating to 1,400,000x its Size aka Decompression Bomb : <a href="https://www.youtube.com/watch?v=1ds-Q04TD98"></a></li>
+					</ul>
 				</section>
 			</div>
 		</div>
