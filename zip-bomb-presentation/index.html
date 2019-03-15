@@ -43,18 +43,19 @@
 					<i>Une bombe de décompression est un type de fichier malveillant qui consiste en un fichier compressé dont la décompression mobilise tellement de ressources qu'il peut faire geler le système.</i> - Wikipédia
 				</section>
 				<section>
-					<h2>Type de bombe de décompression</h2>
+					<h2>Type de compression</h2>
 					<ul>
-						<li>Zip-bomb : Un unique gros fichier compressé</li>
-						<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
-						<li>Nested compressed files : Plein de gros zip de gros compressé</li>
+						<li>Images</li>
+						<li>HTTP</li>
+						<li>Archives</li>
 					</ul>
 				</section>
 				<section>
-					<h2>Formats supportés</h2>
+					<h2>Type de bombe de décompression par archive</h2>
 					<ul>
-						<li>Archives</li>
-						<li>Images</li>
+						<li>Zip-bomb : Un unique gros fichier compressé</li>
+						<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
+						<li>Nested compressed files : Plein de zip de gros fichiers compressé</li>
 					</ul>
 				</section>
 				<section>
@@ -64,7 +65,6 @@
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
 				</section>
 				<section>
-
 					Mitigations
 				</section>
 				<section>
@@ -132,7 +132,6 @@ return data</code></pre>
 			Reveal.initialize({
 				history: true,
 				slideNumber: true ,
-				slideNumber: 'c/t',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
