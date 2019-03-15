@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>ZipBomb</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
@@ -35,13 +35,47 @@
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
 				</section>
 				<section>
-					Mitigation
+					Mitigations
+				</section>
+				<section>
+					<h4>En général</h4>
+					<ol style="margin-bottom: 50px;">
+						<li>
+							Limiter les ressources allouer à un processus potentiellement vulnérable
+						</li>
+						<li>
+							Ne jamais se fier aux headers des fichiers
+						</li>
+					</ol>
+					<h6>Exemple en python</h6>
+<pre><code data-trim>import resource
+rsrc = resource.RLIMIT_DATA
+resource.setrlimit(rsrc, (1024000, 1024000)) # limit to 1MB</code></pre>
+				</section>
+				<section>
+					<h4>Archive</h4>
+					<ol  style="margin-bottom: 50px;">
+						<li>
+							Limiter la taille maximale de l'archive final
+						</li>
+						<li>
+							Limiter le nombre de fichier extrait
+						</li>
+					</ol>
+
+					<h6>Exemple en python</h6>
+<pre><code data-trim>import zlib
+
+dec = zlib.decompressobj()
+data = dec.decompress(data, maxsize)
+if dec.unconsumed_tail:
+  raise ValueError("Possible bomb")
+del dec
+return data</code></pre>
+
 				</section>
 				<section>
 					Démonstration
-				</section>
-				<section>
-					<h1>Source</h1>
 				</section>
 			</div>
 		</div>
@@ -54,14 +88,15 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
+				slideNumber: true ,
+				slideNumber: 'c/t',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				]
 			});
-			Reveal.configure({ slideNumber: true });
-			Reveal.configure({ slideNumber: 'c/t' });
 		</script>
 	</body>
 </html>
