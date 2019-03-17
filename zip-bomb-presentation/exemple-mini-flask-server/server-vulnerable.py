@@ -12,6 +12,7 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = 'images'
 
 app = Flask(__name__, template_folder='.')
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.run(debug=True)
 
 
@@ -24,9 +25,9 @@ def send_images(path):
 def add_image():
     files = request.files.getlist("images")
     for file in files:
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(UPLOAD_FOLDER, str(int(
-            time.time())) + "-" + secrets.token_urlsafe(5)) + ".png")  # image type not relvantp
+        filename = str(int(time.time())) + "-" + secrets.token_urlsafe(5) + ".png"
+        path = UPLOAD_FOLDER + "/" + filename
+        file.save(path)
     return redirect("/")
 
 
