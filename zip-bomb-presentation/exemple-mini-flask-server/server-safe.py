@@ -32,7 +32,7 @@ def add_image():
 		remove_invalid_image(path)
 	return redirect("/")
 
-def remove_invalid_image(path)
+def remove_invalid_image(path):
 	invalid = False
 	try:
 		with Image.open(path) as img:
