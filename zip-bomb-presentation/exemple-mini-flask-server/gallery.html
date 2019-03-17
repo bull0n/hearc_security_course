@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Gallery</title>
+
+	<style>
+		html, body {
+			height: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		h1 {
+			padding: 10px;
+			margin: 0px;
+			font-size: 4em;
+
+			text-align: center;
+			font-variant: small-caps;
+		}
+
+		main {
+			min-height: calc(100% - 2em);
+		}
+
+		form {
+			text-align: center;
+		}
+
+		footer {
+			height:2em;
+			text-align: center;
+		}
+
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		.container div {
+			width: 33%;
+			padding: auto;
+		}
+		.container div img {
+			width: calc(100% - 30px);
+			margin: 5px;
+			border: 10px outset #777777;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1>Gallery</h1>
+		<form method="POST" action="/add" enctype=multipart/form-data>
+			<input type="file" multiple name="images">
+			<input type="submit" value="upload">
+		</form>
+		<div class="container">
+			{% for value in img %}
+			<div>
+				<img src="{{value}}">
+			</div>
+			{% endfor %}
+		</div>
+	</main>
+	<footer>
+		Simple gallery : Lucas Bulloni / Raphaël Margueron, used to explain the decompression bombs
+	</footer>
+</body>
+
+
+</html>
