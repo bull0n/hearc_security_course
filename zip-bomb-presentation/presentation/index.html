@@ -75,7 +75,7 @@
 					<h2>Type de bombe de décompression par archive</h2>
 					<ul>
 						<li>Zip-bomb : Un unique gros fichier compressé</li>
-						<li>Self-reproducing : Créer un clone d'elle même quand décompressé (marche avec certains programmes)</li>
+						<li>Self-reproducing : Créer un clone d'elle même quand décompressée (marche avec certains programmes)</li>
 						<li>Nested compressed files : Plein de zip de gros fichiers compressés</li>
 					</ul>
 				</section>
@@ -87,7 +87,7 @@
 						<li>Denis de service (DoS)
 							<ul>
 								<li>Faire crasher des programmes client (lecteur d'image / navigateur / navigateur mobile)</li>
-								<li>Faire crasher des programmes serveur</li>
+								<li>Faire crasher des programmes serveurs</li>
 								<li>Inonder un disque dur</li>
 							</ul>
 						</li>
@@ -101,12 +101,8 @@
 					<h2>Artisanat</h2>
 				</section>
 				<section>
-					<h2>Comment en faire une simple Zip-bomb archive</h2>
+					<h2>Comment faire une simple Zip-bomb</h2>
 					<pre><code data-trim>dd if=/dev/zero bs=10G count=10000 | bzip2 -c > bomb.bz2</code></pre>
-				</section>
-				<section>
-					<h2>Fonctionnement Self-reproducing bomb</h2>
-					<small>Source : <a href="https://research.swtch.com/zip"></a></small>
 				</section>
 				<section>
 					<h2>Télécharger</h2>
@@ -117,7 +113,7 @@
 
 					<p>Brute force d'un login admin ? Renvoyer une gzip bomb</p>
 					<p>
-						Le navigateur va la décompresser
+						Le client va la décompresser
 					</p>
 				</section>
 			</section>
@@ -170,7 +166,7 @@ return data</code></pre>
 
 				<section>
 					<h3>HTTP</h3>
-					Pas vraiment de mitigation, limiter les ressources et la décompression est le seul moyen disponible
+					Pas vraiment de mitigation, limiter les ressources et la décompression sont les seuls moyens disponibles
 				</section>
 
 			</section>
@@ -184,12 +180,14 @@ return data</code></pre>
 				<p>
 					Sources datées au 15 mars 2019
 				</p>
-				<ul>
-					<li>I Came to Drop Bombs: Auditing the Compression Algorithm Weapon Cache : <a href="https://www.youtube.com/watch?v=IXkX2ojrKZQ"></a></li>
-					<li>The (Decompression) Bomb Site : <a href="https://bomb.codes/"></a></li>
-					<li>bzip2 Archive Inflating to 1,400,000x its Size aka Decompression Bomb : <a href="https://www.youtube.com/watch?v=1ds-Q04TD98"></a></li>
-					<li>How to defend your website with ZIP bombs : <a href="https://blog.haschek.at/2017/how-to-defend-your-website-with-zip-bombs.html"></a></li>
-				</ul>
+				<small>
+					<ul>
+						<li>I Came to Drop Bombs: Auditing the Compression Algorithm Weapon Cache : <br /><a href="https://www.youtube.com/watch?v=IXkX2ojrKZQ"></a></li>
+						<li>The (Decompression) Bomb Site : <br /><a href="https://bomb.codes/"></a></li>
+						<li>bzip2 Archive Inflating to 1,400,000x its Size aka Decompression Bomb : <br /><a href="https://www.youtube.com/watch?v=1ds-Q04TD98"></a></li>
+						<li>How to defend your website with ZIP bombs : <br /><a href="https://blog.haschek.at/2017/how-to-defend-your-website-with-zip-bombs.html"></a></li>
+					</ul>
+				</small>
 			</section>
 		</div>
 	</div>
