@@ -70,10 +70,14 @@ Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
 #### Carte connectée à Internet
 
 **Mode :** NAT
+**IP :** Automatique
+
 
 #### Carte connectée au réseau local
 
 **Mode :** Internal Network
+**IP :** 192.168.1.1
+
 
 ## Machine Virtuelle Client
 
@@ -88,6 +92,7 @@ Le client ne nécessite pas d'installation nécessaire, nous avons uniquement be
 Voici la configuration dans VirtualBox de la carte réseau du client.
 
 **Mode :** NAT
+**IP :** 192.168.1.2
 
 # Réalisation
 
@@ -179,10 +184,11 @@ Il faut configurer la carte réseau pour que la gateway soit l'access point
 
 # Conclusion
 
-bonjour
+Pour conclure, le projet c'est déroulé sans gros problème, certaines configurationes n'étaient pas évidentes, mais avec l'aide de M. Schaefer et quelques recherches sur Internet, les problèmes ont été résolus. Finalement, la machine virtuelle fonctionne et les services se lancent au démarrage sans que l'utilisateur n'ait à se connecter à l'Access Point. Par contre il devra quand même changer ses paramètres réseaux et la configuration du navigateur.
 
 \newpage
 
 \listoffigures
 
 # References
+
