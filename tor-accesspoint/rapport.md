@@ -91,7 +91,7 @@ Voici la configuration dans VirtualBox de la carte réseau du client.
 
 # Réalisation
 
-La majeur partie du travail a été de configuré l'access point pour que tous les services démarrent au démarrage de la machine
+La majeur partie du travail a été de configuré l'access point et que tous les services démarrent au démarrage de la machine
 
 ## Access Point
 
@@ -109,10 +109,19 @@ Pour le client, la seule configuration à faire se trouver dans le navigateur.
 
 Nous avons changé le proxy du navigateur et également désactivé le Javascript pour évité le tracking non-désiré de certains sites.
 
-Pour cela il faut 
+### Configuration réseau du navigateur.
 
+Pour configurer le navigateur il faut modifier les paramètres de connexion afin qu'elle soit identique à ceci :
 
-bonjour[@Schaefer]
+![Configuration réseau](./rsc/configproxypng.png){ width=60% }
+
+Et pour désactivé le navigateur il faut taper `about:config` dans la barre d'adresse et changé la valeur à false comme sur l'image ci-dessous
+
+![Configuration réseau](./rsc/js.png){ width=80% }
+
+Nous avons vérifié que le javascript ait bien été désactivé en allant sur facebook, on peut voir le paramètre "noscript" s'afficher dans la barre d'adresse du navigateur.
+
+![Configuration réseau](./rsc/js2.png){ width=80% }
 
 # Conclusion
 
