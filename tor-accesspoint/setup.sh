@@ -45,6 +45,6 @@ forward-socks5 / localhost:9050 .
 # iptables -t nat -A PREROUTING -i enp0s3 -p tcp --syn -j REDIRECT --to-ports 9040
 # iptables -t nat -L
 
-service tor start
-service privoxy start
+systemctl enable tor privoxy
+systemctl restart tor privoxy
 exit
