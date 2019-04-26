@@ -1,1 +1,1 @@
-pandoc --filter pandoc-citeproc rapport.md --standalone --to latex --latex-engine xelatex --output rapport.pdf
+pandoc --filter pandoc-citeproc $1.md --standalone --to latex --latex-engine xelatex --output $1.pdf
