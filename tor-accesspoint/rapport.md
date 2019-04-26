@@ -77,11 +77,11 @@ Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
 
 ## Machine Virtuelle Client
 
+Cette section présente les programmes pour la configuration du client et la configuration réseau VirtualBox pour le bon fonctionnement de la machine virtuelle.
+
 ### Programmes nécessaires
 
-- Un navigateur
-
-Firefox étant installé par défaut, il ne faut rien installer
+Le client ne nécessite pas d'installation nécessaire, nous avons uniquement besoin d'un navigateur. Firefox étant installé par défaut, il ne faut rien installer
 
 ### Cartes réseau
 
@@ -90,6 +90,23 @@ Voici la configuration dans VirtualBox de la carte réseau du client.
 **Mode :** NAT
 
 # Réalisation
+
+La majeur partie du travail a été de configuré l'access point pour que tous les services démarrent au démarrage de la machine
+
+## Access Point
+
+La première étape de ce travail a été de configurer la carte réseau de l'access point, privoxy et TOR pour que les services démarrent et que l'utilisateur n'ait pas à devoir savoir configurer l'access point.
+
+### Configuration Réseau
+
+### Configuration Privoxy
+
+### Configuration TOR
+
+## Client
+
+Pour le client, la seule configuration à faire se trouver dans le navigateur.
+
 
 bonjour[@Schaefer]
 
