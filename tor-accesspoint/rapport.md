@@ -31,7 +31,7 @@ Le but de ce projet est de configuré une borne d'accès Internet afin que tous 
 
 Pour ce projet nous avons choisi de faire une borne d'accès TOR pour découvrir cette technologie.
 
-# Configuration
+# Prérequis
 
 Pour réaliser ce projet, nous avons utilisé 2 machines virtuelles linux, une client et une serveur.  La machine access point doit avoir 2 carte réseau, une connecté à internet et une autre pour le réseau locale
 
@@ -48,19 +48,50 @@ Le structure du réseau est celle-ci :
 
 ## Machine Virtuelle Access Point
 
+La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requi
+
 ### Programmes nécessaires
 
+Pour l'access point nous avons besoin d'installer Tor [@SetupTor] et Privoxy [@Schaefer]
+
+- privoxy
+- tor
+
+```sh
+apt-get update
+apt-get upgrade
+apt-get install net-tools tor privoxy -y
+```
+
 ### Cartes réseau
+
+Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
+
+#### Carte connectée à Internet
+
+**Mode :** NAT
+
+#### Carte connectée au réseau local
+
+**Mode :** Internal Network
 
 ## Machine Virtuelle Client
 
 ### Programmes nécessaires
 
+- Un navigateur
+
+Firefox étant installé par défaut, il ne faut rien installer
+
 ### Cartes réseau
+
+Voici la configuration dans VirtualBox de la carte réseau du client.
+
+**Mode :** NAT
 
 # Réalisation
 
-bonjour
+bonjour[@Schaefer]
 
 # Conclusion
 
