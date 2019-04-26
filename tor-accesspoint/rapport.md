@@ -48,7 +48,7 @@ Le structure du réseau est celle-ci :
 
 ## Machine Virtuelle Access Point
 
-La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requi
+La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requis sont listés ci-dessous
 
 ### Programmes nécessaires
 
@@ -91,7 +91,7 @@ Voici la configuration dans VirtualBox de la carte réseau du client.
 
 # Réalisation
 
-La majeur partie du travail a été de configuré l'access point pour que tous les services démarrent au démarrage de la machine
+La majeur partie du travail a été de configuré l'access point et que tous les services démarrent au démarrage de la machine
 
 ## Access Point
 
@@ -107,8 +107,21 @@ La première étape de ce travail a été de configurer la carte réseau de l'ac
 
 Pour le client, la seule configuration à faire se trouver dans le navigateur.
 
+Nous avons changé le proxy du navigateur et également désactivé le Javascript pour évité le tracking non-désiré de certains sites.
 
-bonjour[@Schaefer]
+### Configuration réseau du navigateur.
+
+Pour configurer le navigateur il faut modifier les paramètres de connexion afin qu'elle soit identique à ceci :
+
+![Configuration réseau](./rsc/configproxypng.png){ width=60% }
+
+Et pour désactivé le navigateur il faut taper `about:config` dans la barre d'adresse et changé la valeur à false comme sur l'image ci-dessous
+
+![Configuration réseau](./rsc/js.png){ width=80% }
+
+Nous avons vérifié que le javascript ait bien été désactivé en allant sur facebook, on peut voir le paramètre "noscript" s'afficher dans la barre d'adresse du navigateur.
+
+![Configuration réseau](./rsc/js2.png){ width=80% }
 
 # Conclusion
 
