@@ -152,7 +152,7 @@ Pour la configuration nous avons pris la configuration qui nous a été transmis
 
 ### Configuration réseau
 
-Nous devons changer la configuration de la carte réseau pour avoir une carte d'entrée et une carte de sortie. La con
+Pour l'access point il ne faut rien changer. Il faut juste que l'adresse IP du gateway soit celle spécifié précédemment.
 
 ## Client
 
