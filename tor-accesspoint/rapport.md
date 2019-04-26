@@ -48,7 +48,7 @@ Le structure du réseau est celle-ci :
 
 ## Machine Virtuelle Access Point
 
-La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requi
+La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requis sont listés ci-dessous
 
 ### Programmes nécessaires
 
@@ -106,6 +106,10 @@ La première étape de ce travail a été de configurer la carte réseau de l'ac
 ## Client
 
 Pour le client, la seule configuration à faire se trouver dans le navigateur.
+
+Nous avons changé le proxy du navigateur et également désactivé le Javascript pour évité le tracking non-désiré de certains sites.
+
+Pour cela il faut 
 
 
 bonjour[@Schaefer]
