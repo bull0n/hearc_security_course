@@ -111,11 +111,11 @@ Log info file /var/log/tor/notices.log" > /etc/tor/torrc
 echo "user-manual /usr/share/doc/privoxy/user-manual
 confdir /etc/privoxy
 logdir /var/log/privoxy
-actionsfile match-all.action # Actions that are applied to all sites and maybe overruled later on.
-actionsfile default.action   # Main actions file
-actionsfile user.action      # User customizations
+actionsfile match-all.action 
+actionsfile default.action 
+actionsfile user.action 
 filterfile default.filter
-filterfile user.filter      # User customizations
+filterfile user.filter
 debug   1
 logfile logfile
 listen-address  127.0.0.1:3128
@@ -138,23 +138,22 @@ socket-timeout 300
 forward-socks5 / localhost:9050 .
 " > /etc/privoxy/config
 
-
-# TODO : Add the client configuration, proxy config + disable JS, etc..
-# TODO : Add routing for the client + disable DNS requests
-
-# iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 22 -j REDIRECT --to-ports 22
-# iptables -t nat -A PREROUTING -i enp0s3 -p udp --dport 53 -j REDIRECT --to-ports 53
-# iptables -t nat -A PREROUTING -i enp0s3 -p tcp --syn -j REDIRECT --to-ports 9040
-# iptables -t nat -L
-
 systemctl enable tor privoxy
 systemctl restart tor privoxy
 exit
 ```
 
+Pour la configuration nous avons pris la configuration qui nous a été transmis par mail, [@Schaefer]. Ensuite nous avons fait un `diff` pour voir quelles lignes étaient différentes pour intégrer à notre config par défaut.
+
+### Configuration réseau
+
+Nous devons changer la configuration de la carte réseau pour avoir une carte d'entrée et une carte de sortie. La con
+
 ## Client
 
-Pour le client, la seule configuration à faire se trouver dans le navigateur.
+Pour le client, la seule configuration à faire se trouver dans le navigateur et les paramètres.
+
+La configuration de la carte réseau permet de paramètrer l'access point comme gateway.
 
 Nous avons changé le proxy du navigateur et également désactivé le Javascript pour évité le tracking non-désiré de certains sites.
 
@@ -162,15 +161,21 @@ Nous avons changé le proxy du navigateur et également désactivé le Javascrip
 
 Pour configurer le navigateur il faut modifier les paramètres de connexion afin qu'elle soit identique à ceci :
 
-![Configuration réseau](./rsc/configproxypng.png){ width=60% }
+![Configuration du proxy](./rsc/configproxypng.png){ width=60% }
 
 Et pour désactivé le navigateur il faut taper `about:config` dans la barre d'adresse et changé la valeur à false comme sur l'image ci-dessous
 
-![Configuration réseau](./rsc/js.png){ width=80% }
+![Désactivation javascript](./rsc/js.png){ width=80% }
 
 Nous avons vérifié que le javascript ait bien été désactivé en allant sur facebook, on peut voir le paramètre "noscript" s'afficher dans la barre d'adresse du navigateur.
 
-![Configuration réseau](./rsc/js2.png){ width=80% }
+![Vérification désactivation du javascript](./rsc/js2.png){ width=80% }
+
+### Configuration de la carte réseau
+
+Il faut configurer la carte réseau pour que la gateway soit l'access point
+
+![Gateway](./rsc/gateway.png){ width=60% }
 
 # Conclusion
 
