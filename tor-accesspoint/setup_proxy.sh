@@ -36,15 +36,6 @@ socket-timeout 300
 forward-socks5 / localhost:9050 .
 " > /etc/privoxy/config
 
-
-# TODO : Add the client configuration, proxy config + disable JS, etc..
-# TODO : Add routing for the client + disable DNS requests
-
-# iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 22 -j REDIRECT --to-ports 22
-# iptables -t nat -A PREROUTING -i enp0s3 -p udp --dport 53 -j REDIRECT --to-ports 53
-# iptables -t nat -A PREROUTING -i enp0s3 -p tcp --syn -j REDIRECT --to-ports 9040
-# iptables -t nat -L
-
 systemctl enable tor privoxy
 systemctl restart tor privoxy
 exit
