@@ -27,18 +27,20 @@ header-includes: |
 
 # Introduction
 
-Le but de ce projet est de configuré une borne d'accès Internet afin que tous les clients passent par une connexion anonymisée, par exemple avec TOR[@Tor] ou un VPN [@Vpn]. Ce genre de borne d'accès permettrait, par exemple à un journaliste d'avoir un accès à Internet sûr dans un pays où les lois ne sont pas adaptés.
+Le but de ce projet est de configurer une borne d'accès Internet afin que tous les clients passent par une connexion anonymisée, par exemple avec TOR[@Tor] ou un VPN [@Vpn]. Ce genre de borne d'accès permettrait, par exemple à un journaliste d'avoir un accès à Internet sûr dans un pays où les lois ne sont pas adaptées.
 
 Pour ce projet nous avons choisi de faire une borne d'accès TOR pour découvrir cette technologie.
 
 # Prérequis
 
-Pour réaliser ce projet, nous avons utilisé 2 machines virtuelles linux, une client et une serveur.  La machine access point doit avoir 2 carte réseau, une connecté à internet et une autre pour le réseau locale
+Pour réaliser ce projet, nous avons utilisé 2 machines virtuelles linux, une machine cliente (journaliste) et une machine serveur (access point).  La machine access point doit avoir 2 carte réseau, une connectée à internet et une autre pour le réseau local.
 
 ## Machines Virtuelle
 
 - Access Point : Machine GNU/Linux, Ubuntu 18.10
 - Client : Machine GNU/Linux, Ubuntu 18.10
+
+Nous avons choisi Ubuntu car c'est distribution très rapide à installer et que nous connaissions déjà.
 
 ## Réseau
 
@@ -48,7 +50,7 @@ Le structure du réseau est celle-ci :
 
 ## Machine Virtuelle Access Point
 
-La machine virtuelle faisant office d'Access Point requiert plus de configuration que la machine client. Les paquets requis sont listés ci-dessous
+La machine virtuelle, faisant office d'Access Point, requiert plus de configuration que la machine client. Les paquets requis sont listés ci-dessous
 
 ### Programmes nécessaires
 
@@ -72,6 +74,8 @@ Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
 **Mode :** NAT
 **IP :** Automatique
 
+Le réseau de la HE-Arc n'autorise pas les connexions aux réseaux TOR, nous avons utilisé une connexion 4G via un téléphone portable.
+
 
 #### Carte connectée au réseau local
 
@@ -81,11 +85,11 @@ Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
 
 ## Machine Virtuelle Client
 
-Cette section présente les programmes pour la configuration du client et la configuration réseau VirtualBox pour le bon fonctionnement de la machine virtuelle.
+Cette section présente les programmes pour la configuration du client et la configuration réseau VirtualBox pour le bon fonctionnement de la machine virtuelle cliente.
 
 ### Programmes nécessaires
 
-Le client ne nécessite pas d'installation nécessaire, nous avons uniquement besoin d'un navigateur. Firefox étant installé par défaut, il ne faut rien installer
+Le client ne nécessite pas d'installation nécessaire, nous avons uniquement besoin d'un navigateur. Firefox étant installé par défaut, il ne faut rien installer.
 
 ### Cartes réseau
 
@@ -96,7 +100,7 @@ Voici la configuration dans VirtualBox de la carte réseau du client.
 
 # Réalisation
 
-La majeur partie du travail a été de configuré l'access point et que tous les services démarrent au démarrage de la machine
+La majeur partie du travail a été de configurer l'access point et que tous les services démarrent au démarrage de la machine
 
 ## Access Point
 
@@ -104,7 +108,7 @@ La première étape de ce travail a été de configurer la carte réseau de l'ac
 
 ### Script de configuration
 
-La configuration de ce programme étant assez complexe, nous avons pris comme référence la configuration qui nous a été transmis par notre professeur par mail, [@Schaefer]. Ensuite nous avons fait un `diff` pour voir quelles lignes étaient différentes par rapport au fichier de base pour intégrer à notre config par défaut (> pour les lignes ajoutés par Monsieur Schaefer et < pour les lignes retirés). Nous avons adapter les lignes nécessaires pour notre configuration. Nous avons également ajouté au le lancement au démarrage des services avec `systemctl`.
+La configuration de ce programme étant assez complexe, nous avons pris comme référence la configuration qui nous a été transmise par notre professeur par mail, [@Schaefer]. Ensuite nous avons fait un `diff` pour voir quelles lignes étaient différentes par rapport au fichier de base pour intégrer à notre config par défaut (> pour les lignes ajoutés par Monsieur Schaefer et < pour les lignes retirés). Nous avons adapter les lignes nécessaires pour notre configuration. Nous avons également ajouté au le lancement au démarrage des services avec `systemctl`.
 
 
 **Diff entre la configuration de base et celle de Monsieur Schaefer**
@@ -183,7 +187,7 @@ exit
 
 ### Configuration réseau
 
-Pour l'access point il ne faut rien changer. Il faut juste que l'adresse IP du gateway soit celle spécifié précédemment.
+Pour l'access point il ne faut rien changer. Il faut juste que l'adresse IP du gateway soit celle spécifiée précédemment.
 
 ## Client
 
@@ -191,7 +195,7 @@ Pour le client, la seule configuration à faire se trouver dans le navigateur et
 
 La configuration de la carte réseau permet de paramètrer l'access point comme gateway.
 
-Nous avons changé le proxy du navigateur et également désactivé le Javascript pour évité le tracking non-désiré de certains sites.
+Nous avons changé le proxy du navigateur et également désactivé le Javascript pour éviter le tracking non-désiré de certains sites.
 
 ### Configuration réseau du navigateur.
 
@@ -199,7 +203,7 @@ Pour configurer le navigateur il faut modifier les paramètres de connexion afin
 
 ![Configuration du proxy](./rsc/configproxypng.png){ width=60% }
 
-Et pour désactivé le navigateur il faut taper `about:config` dans la barre d'adresse et changé la valeur à false comme sur l'image ci-dessous
+Et pour désactiver le navigateur il faut taper `about:config` dans la barre d'adresse et changer la valeur à `false` comme sur l'image ci-dessous
 
 ![Désactivation javascript](./rsc/js.png){ width=80% }
 
@@ -236,7 +240,7 @@ D'autres pratiques que nous avons retenues :
 
 # Conclusion
 
-Pour conclure, le projet c'est déroulé sans gros problème, certaines configurationes n'étaient pas évidentes, mais avec l'aide de M. Schaefer et quelques recherches sur Internet, les problèmes ont été résolus. Finalement, la machine virtuelle fonctionne et les services se lancent au démarrage sans que l'utilisateur n'ait à se connecter à l'Access Point. Par contre il devra quand même changer ses paramètres réseaux et la configuration du navigateur.
+Pour conclure, le projet c'est déroulé sans gros problème, certaines configurationes n'étaient pas évidentes, mais avec l'aide de M. Schaefer et quelques recherches sur Internet, les problèmes ont été résolus. Finalement, la machine virtuelle fonctionne et les services se lancent au démarrage sans que l'utilisateur n'ait à se connecter à l'Access Point. Par contre, il devra quand même changer ses paramètres réseaux et la configuration du navigateur.
 
 \newpage
 
