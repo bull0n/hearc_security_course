@@ -225,9 +225,7 @@ Nous avons également regarder où était notre noeud de sortie, avec  [les outi
 
 # Risques persistant
 
-Si la personne n'est pas proprement sensibilisée, elle risque d'avoir un comportement qui puisse la d'anonymitée.
-
-Certaines bonnes pratique doivent être prisent [@BonnesPratiquesTor] et [@BonnesPratiquesStackEchange].
+Si la personne n'est pas proprement sensibilisée, elle risque d'avoir un comportement qui puisse compromettre son anonymat. Il font dont que l'utilisateur ait connaissance de certaines pratique comme ne jamais posté d'informations personnelles en étant sur le terrain. Pour plus d'information, il peut aller voir ces deux références [@BonnesPratiquesTor] et [@BonnesPratiquesStackEchange].
 
 Les pratiques que nous avons retenu :
 - Ne pas ouvrir de document style DOC / PDF télécharger dans le Tor.
