@@ -229,6 +229,10 @@ Si la personne n'est pas proprement sensibilisée, elle risque d'avoir un compor
 
 Certaines bonnes pratique doivent être prisent [@BonnesPratiquesTor] et [@BonnesPratiquesStackEchange].
 
+Les pratiques que nous avons retenu :
+- Ne pas ouvrir de document style DOC / PDF télécharger dans le Tor.
+- Utiliser les versions HTTPS des sites quand disponibles.
+- Faire régulièrement les mises à jour de la machine utilisé.
 
 # Conclusion
 
