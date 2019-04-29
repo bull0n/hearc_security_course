@@ -213,6 +213,23 @@ Il faut configurer la carte réseau pour que la gateway soit l'access point
 
 ![Gateway](./rsc/gateway.png){ width=60% }
 
+# Contrôles
+
+Pour vérifier si le fonctionnement de notre configuration Tor a fonctionné. Nous avons utiliser le vérificateur Tor du site officiel[@CheckTorProject].
+
+![Vérifications](./rsc/congrat_tor.png){ width=60% }
+
+Nous avons également regarder où était notre noeud de sortie, avec  [les outils Google](https://www.google.ch/search?q=where+am+i&oq=where+am+i)
+
+![Où suis-je ?](./rsc/whereami.png){ width=60% }
+
+# Risques persistant
+
+Si la personne n'est pas proprement sensibilisée, elle risque d'avoir un comportement qui puisse la d'anonymitée.
+
+Certaines bonnes pratique doivent être prisent [@BonnesPratiquesTor] et [@BonnesPratiquesStackEchange].
+
+
 # Conclusion
 
 Pour conclure, le projet c'est déroulé sans gros problème, certaines configurationes n'étaient pas évidentes, mais avec l'aide de M. Schaefer et quelques recherches sur Internet, les problèmes ont été résolus. Finalement, la machine virtuelle fonctionne et les services se lancent au démarrage sans que l'utilisateur n'ait à se connecter à l'Access Point. Par contre il devra quand même changer ses paramètres réseaux et la configuration du navigateur.
