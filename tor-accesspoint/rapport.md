@@ -213,6 +213,8 @@ Il faut configurer la carte réseau pour que la gateway soit l'access point
 
 ![Gateway](./rsc/gateway.png){ width=60% }
 
+\newpage
+
 # Contrôles
 
 Pour vérifier si le fonctionnement de notre configuration Tor a fonctionné. Nous avons utiliser le vérificateur Tor du site officiel[@CheckTorProject].
