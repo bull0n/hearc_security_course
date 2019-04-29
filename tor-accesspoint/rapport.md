@@ -38,11 +38,11 @@ Pour réaliser ce projet, nous avons utilisé 2 machines virtuelles linux, une c
 ## Machines Virtuelle
 
 - Access Point : Machine GNU/Linux, Ubuntu 18.10
-- Client : Machine GNU/nLinux, Ubuntu 18.10
+- Client : Machine GNU/Linux, Ubuntu 18.10
 
 ## Réseau
 
-Le structure du réseau est celle-ci : 
+Le structure du réseau est celle-ci :
 
 ![Architecture du réseau](./rsc/network-diagram.png){ width=50% }
 
@@ -60,7 +60,7 @@ Pour l'access point nous avons besoin d'installer Tor [@SetupTor] et Privoxy [@S
 ```sh
 apt-get update
 apt-get upgrade
-apt-get install net-tools tor privoxy -y
+apt-get install tor privoxy -y
 ```
 
 ### Cartes réseau
@@ -75,7 +75,7 @@ Voici la configuration nécessaire pour les 2 cartes réseaux dans VirtualBox.
 
 #### Carte connectée au réseau local
 
-**Mode :** Internal Network
+**Mode :** Internal Network (réseau des machines virtuelles)
 **IP :** 192.168.1.1
 
 
@@ -104,6 +104,39 @@ La première étape de ce travail a été de configurer la carte réseau de l'ac
 
 ### Script de configuration
 
+La configuration de ce programme étant assez complexe, nous avons pris comme référence la configuration qui nous a été transmis par notre professeur par mail, [@Schaefer]. Ensuite nous avons fait un `diff` pour voir quelles lignes étaient différentes par rapport au fichier de base pour intégrer à notre config par défaut (> pour les lignes ajoutés par Monsieur Schaefer et < pour les lignes retirés). Nous avons adapter les lignes nécessaires pour notre configuration. Nous avons également ajouté au le lancement au démarrage des services avec `systemctl`.
+
+
+**Diff entre la configuration de base et celle de Monsieur Schaefer**
+```
+> admin-address admin@alphanet.ch
+8d8
+< filterfile user.filter      # User customizations
+9a10,11
+> debug      1 # Log the destination for each request Privoxy let through.
+> hostname 192.168.99.105
+11c13
+< listen-address  [::1]:8118
+---
+> listen-address  192.168.99.105:8118
+16a19,24
+> permit-access   192.168.1.0/24
+> permit-access   127.0.0.1/32
+> permit-access   [::1]/128
+> permit-access   192.168.99.105/32
+> permit-access   192.168.99.104/32
+> permit-access   192.168.99.121/32
+18c26
+< enable-proxy-authentication-forwarding 0
+---
+> forward-socks5   /               127.0.0.1:9050 .
+24d31
+< tolerate-pipelining 1
+25a33
+> handle-as-empty-doc-returns-ok 1
+```
+
+**Script de configruation utilisé pour notre proxy**
 ```shell
 sudo su
 apt-get update
@@ -116,9 +149,9 @@ Log info file /var/log/tor/notices.log" > /etc/tor/torrc
 echo "user-manual /usr/share/doc/privoxy/user-manual
 confdir /etc/privoxy
 logdir /var/log/privoxy
-actionsfile match-all.action 
-actionsfile default.action 
-actionsfile user.action 
+actionsfile match-all.action
+actionsfile default.action
+actionsfile user.action
 filterfile default.filter
 filterfile user.filter
 debug   1
@@ -148,8 +181,6 @@ systemctl restart tor privoxy
 exit
 ```
 
-Pour la configuration nous avons pris la configuration qui nous a été transmis par mail, [@Schaefer]. Ensuite nous avons fait un `diff` pour voir quelles lignes étaient différentes pour intégrer à notre config par défaut.
-
 ### Configuration réseau
 
 Pour l'access point il ne faut rien changer. Il faut juste que l'adresse IP du gateway soit celle spécifié précédemment.
@@ -172,7 +203,7 @@ Et pour désactivé le navigateur il faut taper `about:config` dans la barre d'a
 
 ![Désactivation javascript](./rsc/js.png){ width=80% }
 
-Nous avons vérifié que le javascript ait bien été désactivé en allant sur facebook, on peut voir le paramètre "noscript" s'afficher dans la barre d'adresse du navigateur.
+Nous avons vérifié que le javascript ait bien été désactivé en allant sur facebook, on peut voir le paramètre "noscript" s'afficher dans la barre d'adresse du navigateur. Il est dû a une redirection qui se produit lorsqu'il remarque que nous n'utilisons pas javascript.
 
 ![Vérification désactivation du javascript](./rsc/js2.png){ width=80% }
 
