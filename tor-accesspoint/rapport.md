@@ -219,15 +219,15 @@ Pour vérifier si le fonctionnement de notre configuration Tor a fonctionné. No
 
 ![Vérifications](./rsc/congrat_tor.png){ width=60% }
 
-Nous avons également regarder où était notre noeud de sortie, avec  [les outils Google](https://www.google.ch/search?q=where+am+i&oq=where+am+i)
+Nous avons également regarder où était notre noeud de sortie, avec  [cmyip](https://cmyip.com)
 
-![Où suis-je ?](./rsc/whereami.png){ width=60% }
+![Cmyip ?](./rsc/cmyip.png){ width=60% }
 
 # Risques persistant
 
 Si la personne n'est pas proprement sensibilisée, elle risque d'avoir un comportement qui puisse compromettre son anonymat. Il font dont que l'utilisateur ait connaissance de certaines pratique comme ne jamais posté d'informations personnelles en étant sur le terrain. Pour plus d'information, il peut aller voir ces deux références [@BonnesPratiquesTor] et [@BonnesPratiquesStackEchange].
 
-Les pratiques que nous avons retenu :
+D'autres pratiques que nous avons retenues :
 - Ne pas ouvrir de document style DOC / PDF télécharger dans le Tor.
 - Utiliser les versions HTTPS des sites quand disponibles.
 - Faire régulièrement les mises à jour de la machine utilisé.
