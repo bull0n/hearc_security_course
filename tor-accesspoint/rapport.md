@@ -27,7 +27,7 @@ header-includes: |
 
 # Introduction
 
-Le but de ce projet est de configuré une borne d'accès Internet afin que tous les clients passent par une connexion anonymisée, par exemple avec TOR ou un VPN. Ce genre de borne d'accès permettrait, par exemple à un journaliste d'avoir un accès à Internet sûr dans un pays où les lois ne sont pas adaptés.
+Le but de ce projet est de configuré une borne d'accès Internet afin que tous les clients passent par une connexion anonymisée, par exemple avec TOR[@Tor] ou un VPN [@Vpn]. Ce genre de borne d'accès permettrait, par exemple à un journaliste d'avoir un accès à Internet sûr dans un pays où les lois ne sont pas adaptés.
 
 Pour ce projet nous avons choisi de faire une borne d'accès TOR pour découvrir cette technologie.
 
